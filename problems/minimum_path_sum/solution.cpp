@@ -1,18 +1,21 @@
 class Solution {
 public:
     int minPathSum(vector<vector<int>>& grid) {
-        int h = grid.size();
-        int w = grid[0].size();
-        vector<vector<int>> dp(h, vector<int> (w));
-        for(int row = 0; row < h; row++) {
-            for(int col = 0; col < w; col++) {
-                if(row == 0 && col == 0) {
-                    dp[row][col] = grid[row][col];
+        int result = 0;
+        const int INF = std::numeric_limits<int>::max();
+        int height = grid.size();
+        int width = grid[0].size();
+        vector<vector<int>> pathStorage(height, vector<int>(width));
+        pathStorage[0][0] = grid[0][0];
+        for(int row = 0; row < grid.size(); row++) {
+            for(int column = 0; column < grid[row].size(); column++) {
+                if(row == 0 && column == 0) {
+                    pathStorage[row][column] = grid[row][column];
                 } else {
-                    dp[row][col] = grid[row][col] + min((row == 0 ? INT_MAX : dp[row - 1][col]), (col == 0 ? INT_MAX : dp[row][col - 1]));
+                    pathStorage[row][column] = grid[row][column] + min((row == 0 ? INF : pathStorage[row - 1][column]), (column == 0 ? INF : pathStorage[row][column - 1]));
                 }
-            }
         }
-        return dp[h - 1][w - 1];
+    }
+    return pathStorage[height - 1][width - 1];
     }
 };
