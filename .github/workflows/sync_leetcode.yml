@@ -13,6 +13,6 @@ jobs:
     - name: Sync
       uses: actions/checkout@v2
       with:
-        github-token: ${{ github.PAT }}
+        github-token: 0624ae9dade1dd0833a783258a80dd922e00cc37
         leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
         leetcode-session: ${{ secrets.LEETCODE_SESSION }}
