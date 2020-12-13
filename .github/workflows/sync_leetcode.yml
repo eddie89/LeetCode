@@ -11,8 +11,8 @@ jobs:
 
     steps:
     - name: Sync
-      uses: actions/checkout@v2
+      uses: eddie89/LeetCode@v2
       with:
-        github-token: 0624ae9dade1dd0833a783258a80dd922e00cc37
+        github-token: ${{ tokens.PAT }}
         leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
         leetcode-session: ${{ secrets.LEETCODE_SESSION }}
